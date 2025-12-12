@@ -1,127 +1,60 @@
 package models;
 
-public class Parcel {
-    private String parcelId;
-    private String description;
-    private double weight;
-    private String status;
-    private Customer sender;
-    private Staff assignedStaff;
-    private String destination;
-    private String recipientName;
-    private String recipientPhone;
-    private String[] trackingHistory;
-    private int historyCount;
+import java.time.LocalDate;
+
+public abstract class Parcel {
+    protected String parcelId;
+    protected User sender;
+    protected User receiver;
+    protected double weight;
+    protected String dimensions;
+    protected String status;
+    protected double price;
+    protected LocalDate createdDate;
+    protected String description;
     
-    public Parcel(String parcelId, String description, double weight, 
-                  String status, Customer sender, 
-                  String destination, String recipientName, 
-                  String recipientPhone) {
+    public Parcel(String parcelId, User sender, User receiver, 
+                  double weight, String dimensions, String description) {
         this.parcelId = parcelId;
-        this.description = description;
-        this.weight = weight;
-        this.status = status;
         this.sender = sender;
-        this.destination = destination;
-        this.recipientName = recipientName;
-        this.recipientPhone = recipientPhone;
-        this.assignedStaff = null;
-        this.trackingHistory = new String[10];
-        this.historyCount = 0;
-        addToHistory("Parcel created - Status: " + status);
+        this.receiver = receiver;
+        this.weight = weight;
+        this.dimensions = dimensions;
+        this.description = description;
+        this.status = "Created";
+        this.createdDate = LocalDate.now();
+        this.price = calculatePrice(); // Abstract method call
     }
     
-    // Getter methods
-    public String getParcelId() {
-        return parcelId;
-    }
+    // Abstract methods (polymorphism)
+    public abstract double calculatePrice();
+    public abstract void updateStatus(String newStatus);
     
-    public String getDescription() {
-        return description;
-    }
-    
-    public double getWeight() {
-        return weight;
-    }
-    
-    public String getStatus() {
-        return status;
-    }
+    // Common methods
+    public String getParcelId() { return parcelId; }
+    public User getSender() { return sender; }
+    public User getReceiver() { return receiver; }
+    public double getWeight() { return weight; }
+    public String getDimensions() { return dimensions; }
+    public String getStatus() { return status; }
+    public double getPrice() { return price; }
+    public LocalDate getCreatedDate() { return createdDate; }
+    public String getDescription() { return description; }
     
     public void setStatus(String status) {
         this.status = status;
-        addToHistory("Status updated to: " + status);
     }
     
-    public Customer getSender() {
-        return sender;
-    }
-    
-    public Staff getAssignedStaff() {
-        return assignedStaff;
-    }
-    
-    public void setAssignedStaff(Staff staff) {
-        this.assignedStaff = staff;
-        addToHistory("Assigned to staff: " + staff.getName());
-    }
-    
-    // NEW: Destination getters
-    public String getDestination() {
-        return destination;
-    }
-    
-    public String getRecipientName() {
-        return recipientName;  // THIS ONE WAS MISSING!
-    }
-    
-    public String getRecipientPhone() {
-        return recipientPhone;
-    }
-    
-    // Optional setters for destination
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-    
-    public void setRecipientName(String recipientName) {
-        this.recipientName = recipientName;
-    }
-    
-    public void setRecipientPhone(String recipientPhone) {
-        this.recipientPhone = recipientPhone;
-    }
-    
-    // Method to add tracking history
-    private void addToHistory(String event) {
-        if (historyCount < trackingHistory.length) {
-            trackingHistory[historyCount] = event;
-            historyCount++;
-        }
-    }
-    
-    // Method to display tracking history
-    public void displayTrackingHistory() {
-        System.out.println("\n--- Tracking History for Parcel " + parcelId + " ---");
-        for (int i = 0; i < historyCount; i++) {
-            System.out.println((i + 1) + ". " + trackingHistory[i]);
-        }
-    }
-    
-    // Method to display parcel details
-    public void displayDetails() {
-        System.out.println("\n=== Parcel Details ===");
+    public void displayParcelInfo() {
+        System.out.println("\n=== PARCEL INFORMATION ===");
         System.out.println("Parcel ID: " + parcelId);
         System.out.println("Description: " + description);
-        System.out.println("Weight: " + weight + " kg");
-        System.out.println("Status: " + status);
         System.out.println("Sender: " + sender.getName());
-        System.out.println("Destination: " + destination);
-        System.out.println("Recipient: " + recipientName);
-        System.out.println("Recipient Phone: " + recipientPhone);
-        
-        if (assignedStaff != null) {
-            System.out.println("Assigned Staff: " + assignedStaff.getName());
-        }
+        System.out.println("Receiver: " + receiver.getName());
+        System.out.println("Weight: " + weight + " kg");
+        System.out.println("Dimensions: " + dimensions);
+        System.out.println("Status: " + status);
+        System.out.println("Price: RM" + price);
+        System.out.println("Created: " + createdDate);
     }
 }

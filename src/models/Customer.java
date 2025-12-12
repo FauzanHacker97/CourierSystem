@@ -1,38 +1,44 @@
 package models;
 
-public class Customer extends Person {
-    // Additional attribute specific to Customer
-    private String email;
-    private double totalSpent;
+public class Customer extends User {
+    private String address;
+    private int loyaltyPoints;
     
-    public Customer(String id, String name, String phone, String email) {
-        super(id, name, phone); // Call parent constructor
-        this.email = email;
-        this.totalSpent = 0.0;
+    public Customer(String userId, String name, String email,
+                    String password, String phone, String address) {
+        super(userId, name, email, password, phone);
+        this.address = address;
+        this.loyaltyPoints = 0;
     }
     
-    // Getter and Setter
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    public double getTotalSpent() {
-        return totalSpent;
-    }
-    
-    public void addToTotalSpent(double amount) {
-        this.totalSpent += amount;
-    }
-    
-    // Override displayInfo method (Polymorphism - will be used in Phase 3)
     @Override
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println("Email: " + email);
-        System.out.println("Total Spent: RM" + totalSpent);
+    public void login() {
+        System.out.println("Customer " + name + " logged in successfully!");
     }
+    
+    @Override
+    public void logout() {
+        System.out.println("Customer " + name + " logged out.");
+    }
+    
+    // Getters and setters
+    public String getAddress() { return address; }
+    public int getLoyaltyPoints() { return loyaltyPoints; }
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    public void addLoyaltyPoints(int points) {
+        this.loyaltyPoints += points;
+    }
+    
+    public void displayCustomerInfo() {
+        System.out.println("\n=== CUSTOMER INFORMATION ===");
+        displayUserInfo();
+        System.out.println("Address: " + address);
+        System.out.println("Loyalty Points: " + loyaltyPoints);
+    }
+
+
 }
