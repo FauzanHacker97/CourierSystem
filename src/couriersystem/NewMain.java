@@ -112,7 +112,7 @@ public class NewMain {
         payments.get(0).processPayment();
         payments.get(1).processPayment();
         
-        System.out.println("✓ Sample data initialized successfully!");
+        System.out.println("Sample data initialized successfully!");
         System.out.println("  - " + users.size() + " users (customers & staff)");
         System.out.println("  - " + parcels.size() + " parcels (using Factory Pattern)");
         System.out.println("  - " + vehicles.size() + " vehicles");
@@ -268,7 +268,7 @@ public class NewMain {
         Customer newCustomer = new Customer(id, name, email, password, phone, address);
         users.add(newCustomer);
         
-        System.out.println("✅ Customer registered successfully!");
+        System.out.println("Customer registered successfully!");
         System.out.println("Please login with your new credentials.");
     }
     
@@ -294,11 +294,11 @@ public class NewMain {
                              " - " + vehicles.get(i).getVehicleType());
         }
         
-        System.out.println("\n✓ All array requirements demonstrated!");
-        System.out.println("  - Primitive arrays ✓");
-        System.out.println("  - String arrays ✓");
-        System.out.println("  - Object arrays ✓");
-        System.out.println("  - Array operations ✓");
+        System.out.println("\n All array requirements demonstrated!");
+        System.out.println("  - Primitive arrays");
+        System.out.println("  - String arrays");
+        System.out.println("  - Object arrays");
+        System.out.println("  - Array operations");
     }
     
     // ==================== CUSTOMER DASHBOARD ====================
@@ -441,7 +441,7 @@ public class NewMain {
         arrayDemo.addToArchive(newParcel);
         parcelService.addParcel(newParcel);
         
-        System.out.println("\n📦 Creating delivery assignment for new parcel...");
+        System.out.println("\n Creating delivery assignment for new parcel...");
     
     // Find available staff
     Staff availableStaff = null;
@@ -460,14 +460,14 @@ public class NewMain {
         Delivery newDelivery = new Delivery(deliveryId, newParcel, availableStaff);
         deliveries.add(newDelivery);
         
-        System.out.println("✅ Delivery created: " + deliveryId);
+        System.out.println("   Delivery created: " + deliveryId);
         System.out.println("   Assigned to: " + availableStaff.getName());
         System.out.println("   Status: Scheduled");
     } else {
-        System.out.println("⚠️  No staff available. Delivery will be assigned later.");
+        System.out.println(" ️  No staff available. Delivery will be assigned later.");
     }
         
-        System.out.println("\n✅ PARCEL CREATED SUCCESSFULLY!");
+        System.out.println("\n PARCEL CREATED SUCCESSFULLY!");
         System.out.println("Factory Pattern used: ParcelFactory.createParcel()");
         newParcel.displayParcelInfo();
         
@@ -611,7 +611,7 @@ public class NewMain {
         scanner.nextLine();
         
         if (choice < 1 || choice > unpaidParcels.size()) {
-            System.out.println("❌ Invalid selection!");
+            System.out.println(" Invalid selection!");
             return;
         }
         
@@ -647,9 +647,9 @@ public class NewMain {
         System.out.println("=".repeat(40));
         
         System.out.println("\nSelect Payment Method:");
-        System.out.println("1. 💳 Credit/Debit Card");
-        System.out.println("2. 🏦 Online Banking");
-        System.out.println("3. 💰 Cash on Delivery");
+        System.out.println("1. Credit/Debit Card");
+        System.out.println("2. Online Banking");
+        System.out.println("3. Cash on Delivery");
         System.out.print("Choice (1-3): ");
         
         int methodChoice = scanner.nextInt();
@@ -672,13 +672,13 @@ public class NewMain {
                 
                 // Simple validation
                 if (card.length() != 16 || !card.matches("\\d+")) {
-                    System.out.println("❌ Invalid card number! Must be 16 digits.");
+                    System.out.println(" Invalid card number! Must be 16 digits.");
                     return;
                 }
                 
                 paymentDetails = "Card: ****" + card.substring(12) + 
                                ", Exp: " + expiry;
-                System.out.println("\n🔐 Processing secure payment...");
+                System.out.println("\n Processing secure payment...");
                 Thread.sleep(1500); // Simulate processing
                 break;
                 
@@ -700,20 +700,20 @@ public class NewMain {
                     default: bankName = "Online Banking";
                 }
                 
-                System.out.println("\n🌐 Redirecting to " + bankName + " portal...");
+                System.out.println("\n Redirecting to " + bankName + " portal...");
                 Thread.sleep(1500); // Simulate redirect
                 paymentDetails = "Bank: " + bankName;
                 break;
                 
             case 3:
                 paymentMethod = "Cash on Delivery";
-                System.out.println("\n💰 Payment will be collected upon delivery.");
+                System.out.println("\n Payment will be collected upon delivery.");
                 System.out.println("Delivery staff will provide receipt.");
                 paymentDetails = "To be collected";
                 break;
                 
             default:
-                System.out.println("❌ Invalid choice! Using default payment.");
+                System.out.println(" Invalid choice! Using default payment.");
                 paymentMethod = "Unknown";
         }
         
@@ -722,7 +722,7 @@ public class NewMain {
         Payment payment = new Payment(paymentId, amount, paymentMethod);
         
         // Process payment
-        System.out.println("\n⏳ Processing payment...");
+        System.out.println("\n Processing payment...");
         Thread.sleep(1000); // Simulate processing
         
         payment.processPayment();
@@ -762,13 +762,13 @@ public class NewMain {
         System.out.println("Total Points: " + customer.getLoyaltyPoints());
         System.out.println("=".repeat(50));
         
-        System.out.println("\n✅ PAYMENT SUCCESSFUL!");
-        System.out.println("📧 Receipt has been sent to " + customer.getEmail());
-        System.out.println("📦 Your parcel is now being processed.");
-        System.out.println("🔔 You will be notified when it's shipped.");
+        System.out.println("\n PAYMENT SUCCESSFUL!");
+        System.out.println(" Receipt has been sent to " + customer.getEmail());
+        System.out.println(" Your parcel is now being processed.");
+        System.out.println(" You will be notified when it's shipped.");
         
     } catch (InputMismatchException e) {
-        System.out.println("❌ Invalid input! Please enter numbers only.");
+        System.out.println(" Invalid input! Please enter numbers only.");
         scanner.nextLine();
     } catch (InterruptedException e) {
         System.out.println("Payment processing interrupted.");
@@ -793,7 +793,7 @@ public class NewMain {
             System.out.println("Staff ID: " + staff.getUserId());
             System.out.println("Name: " + staff.getName());
             System.out.println("Role: " + staff.getRole());
-            System.out.println("Available: " + (staff.isAvailable() ? "✅ Yes" : "❌ No"));
+            System.out.println("Available: " + (staff.isAvailable() ? "Yes" : "No"));
             System.out.println("-".repeat(40));
             
             System.out.println("\n1. View My Profile");
@@ -836,13 +836,13 @@ public class NewMain {
                         logout = true;
                         staff.logout();
                         currentUser = null;
-                        System.out.println("✅ Staff logged out successfully!");
+                        System.out.println("Staff logged out successfully!");
                         break;
                     default:
-                        System.out.println("❌ Invalid option! Please choose 1-8.");
+                        System.out.println("Invalid option! Please choose 1-8.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("❌ Invalid input! Please enter a number.");
+                System.out.println("Invalid input! Please enter a number.");
                 scanner.nextLine();
             }
         }
@@ -887,7 +887,7 @@ public class NewMain {
             if (delivery.getDeliveryPerson() != null && 
                 delivery.getDeliveryPerson().getUserId().equals(staff.getUserId())) {
                 
-                System.out.println("\n📦 Delivery ID: " + delivery.getDeliveryId());
+                System.out.println("\n Delivery ID: " + delivery.getDeliveryId());
                 System.out.println("   Parcel: " + delivery.getParcel().getParcelId() + 
                                  " - " + delivery.getParcel().getDescription());
                 System.out.println("   Status: " + delivery.getStatus());
@@ -931,17 +931,17 @@ public class NewMain {
         }
         
         if (foundParcel == null) {
-            System.out.println("❌ Parcel not found!");
+            System.out.println("Parcel not found!");
             return;
         }
         
         System.out.println("\nCurrent Status: " + foundParcel.getStatus());
         System.out.println("\nSelect new status:");
-        System.out.println("1. 📦 Processing");
-        System.out.println("2. 🚚 In Transit");
-        System.out.println("3. 🚀 Out for Delivery");
-        System.out.println("4. ✅ Delivered");
-        System.out.println("5. ↩️ Returned");
+        System.out.println("1. Processing");
+        System.out.println("2. In Transit");
+        System.out.println("3. Out for Delivery");
+        System.out.println("4. Delivered");
+        System.out.println("5. Returned");
         System.out.print("Choice (1-5): ");
         
         try {
@@ -966,12 +966,12 @@ public class NewMain {
                     newStatus = "Returned";
                     break;
                 default:
-                    System.out.println("❌ Invalid choice!");
+                    System.out.println("Invalid choice!");
                     return;
             }
             
             foundParcel.updateStatus(newStatus);
-            System.out.println("✅ Status updated to: " + newStatus);
+            System.out.println("Status updated to: " + newStatus);
             
             // Update delivery status if exists
             for (Delivery delivery : deliveries) {
@@ -981,7 +981,7 @@ public class NewMain {
             }
             
         } catch (InputMismatchException e) {
-            System.out.println("❌ Invalid input! Please enter a number.");
+            System.out.println("Invalid input! Please enter a number.");
             scanner.nextLine();
         }
     }
@@ -995,7 +995,7 @@ public class NewMain {
         ArrayList<Delivery> pendingDeliveries = new ArrayList<>();
         int count = 0;
         
-        System.out.println("\n📦 Deliveries ready for completion:");
+        System.out.println("\n Deliveries ready for completion:");
         for (Delivery delivery : deliveries) {
             if (delivery.getDeliveryPerson() != null && 
                 delivery.getDeliveryPerson().getUserId().equals(staff.getUserId()) &&
@@ -1024,7 +1024,7 @@ public class NewMain {
             scanner.nextLine();
             
             if (choice < 1 || choice > pendingDeliveries.size()) {
-                System.out.println("❌ Invalid selection!");
+                System.out.println("Invalid selection!");
                 return;
             }
             
@@ -1046,15 +1046,15 @@ public class NewMain {
             selectedDelivery.getParcel().updateStatus("Delivered");
             
             // Add success message
-            System.out.println("\n🎉 DELIVERY COMPLETED SUCCESSFULLY!");
-            System.out.println("📝 Signature: " + signature);
+            System.out.println("\n DELIVERY COMPLETED SUCCESSFULLY!");
+            System.out.println("Signature: " + signature);
             if (!notes.isEmpty()) {
-                System.out.println("📋 Notes: " + notes);
+                System.out.println("Notes: " + notes);
             }
-            System.out.println("⏰ Time: " + java.time.LocalDateTime.now());
+            System.out.println("Time: " + java.time.LocalDateTime.now());
             
         } catch (InputMismatchException e) {
-            System.out.println("❌ Invalid input!");
+            System.out.println("Invalid input!");
             scanner.nextLine();
         }
     }
@@ -1066,14 +1066,14 @@ public class NewMain {
         
         boolean hasAvailableVehicles = false;
         
-        System.out.println("\n🚗 Vehicle Fleet:");
+        System.out.println("\n Vehicle Fleet:");
         for (int i = 0; i < vehicles.size(); i++) {
             Vehicle vehicle = vehicles.get(i);
             System.out.println("\n" + (i + 1) + ". " + vehicle.getVehicleId());
             System.out.println("   Type: " + vehicle.getVehicleType());
             System.out.println("   Plate: " + vehicle.getPlateNumber());
             System.out.println("   Capacity: " + vehicle.getCapacity() + " kg");
-            System.out.println("   Status: " + (vehicle.isAvailable() ? "✅ Available" : "❌ In Use"));
+            System.out.println("   Status: " + (vehicle.isAvailable() ? "Available" : "In Use"));
             
             if (vehicle.isAvailable()) {
                 hasAvailableVehicles = true;
@@ -1081,7 +1081,7 @@ public class NewMain {
         }
         
         if (!hasAvailableVehicles) {
-            System.out.println("\n⚠️ No vehicles currently available.");
+            System.out.println("\n No vehicles currently available.");
             System.out.println("Please contact the warehouse manager.");
         }
     }
@@ -1094,11 +1094,11 @@ public class NewMain {
         boolean currentStatus = staff.isAvailable();
         staff.setAvailable(!currentStatus);
         
-        System.out.println("\n✅ Availability updated!");
-        System.out.println("New Status: " + (staff.isAvailable() ? "✅ Available for assignments" : "❌ Not available"));
+        System.out.println("\n Availability updated!");
+        System.out.println("New Status: " + (staff.isAvailable() ? "Available for assignments" : "Not available"));
         
         if (!staff.isAvailable()) {
-            System.out.println("\n⚠️ Note: You will not receive new delivery assignments");
+            System.out.println("\n Note: You will not receive new delivery assignments");
             System.out.println("   until you set your status back to available.");
         }
     }
@@ -1114,7 +1114,7 @@ public class NewMain {
         }
         
         System.out.println("\nTotal Parcels: " + parcels.size());
-        System.out.println("\n📦 Parcel List:");
+        System.out.println("\nParcel List:");
         
         for (int i = 0; i < parcels.size(); i++) {
             Parcel parcel = parcels.get(i);
@@ -1316,15 +1316,14 @@ public class NewMain {
     private static void assignStaffToDelivery() {
     System.out.println("\n=== ASSIGN STAFF TO DELIVERY ===");
     
-    // 🚨 CHANGE: Show ALL deliveries, not just unassigned
     System.out.println("\nAll Deliveries:");
     ArrayList<Delivery> allDeliveriesList = new ArrayList<>();
     int count = 0;
     
     for (Delivery delivery : deliveries) {
         String staffInfo = (delivery.getDeliveryPerson() == null) ? 
-                          "❌ No staff assigned" : 
-                          "✅ " + delivery.getDeliveryPerson().getName();
+                          "No staff assigned" : 
+                          "" + delivery.getDeliveryPerson().getName();
         
         System.out.println((count + 1) + ". Delivery ID: " + delivery.getDeliveryId());
         System.out.println("   Parcel: " + delivery.getParcel().getParcelId() + 
@@ -1346,7 +1345,7 @@ public class NewMain {
         scanner.nextLine();
         
         if (deliveryChoice < 1 || deliveryChoice > allDeliveriesList.size()) {
-            System.out.println("❌ Invalid selection!");
+            System.out.println("Invalid selection!");
             return;
         }
         
@@ -1379,7 +1378,7 @@ public class NewMain {
         scanner.nextLine();
         
         if (staffChoice < 1 || staffChoice > availableStaff.size()) {
-            System.out.println("❌ Invalid selection!");
+            System.out.println("Invalid selection!");
             return;
         }
         
@@ -1387,18 +1386,18 @@ public class NewMain {
         
         // Assign staff (can be new assignment or reassignment)
         if (selectedDelivery.getDeliveryPerson() != null) {
-            System.out.println("🔄 Reassigning staff from " + 
+            System.out.println("Reassigning staff from " + 
                              selectedDelivery.getDeliveryPerson().getName() + 
                              " to " + selectedStaff.getName());
         }
         
         selectedDelivery.setDeliveryPerson(selectedStaff);
         
-        System.out.println("✅ Staff " + selectedStaff.getName() + 
+        System.out.println("Staff " + selectedStaff.getName() + 
                          " assigned to Delivery " + selectedDelivery.getDeliveryId());
         
     } catch (InputMismatchException e) {
-        System.out.println("❌ Invalid input!");
+        System.out.println("Invalid input!");
         scanner.nextLine();
     }
 }
@@ -1414,7 +1413,7 @@ public class NewMain {
     }
     
     // Show all deliveries
-    System.out.println("\n📦 Available Deliveries:");
+    System.out.println("\nAvailable Deliveries:");
     for (int i = 0; i < deliveries.size(); i++) {
         Delivery delivery = deliveries.get(i);
         System.out.println("\n" + (i + 1) + ". Delivery ID: " + delivery.getDeliveryId());
@@ -1438,7 +1437,7 @@ public class NewMain {
         scanner.nextLine();
         
         if (deliveryChoice < 1 || deliveryChoice > deliveries.size()) {
-            System.out.println("❌ Invalid selection!");
+            System.out.println("Invalid selection!");
             return;
         }
         
@@ -1447,7 +1446,7 @@ public class NewMain {
         
         // Check if already has a vehicle
         if (selectedDelivery.getAssignedVehicle() != null) {
-            System.out.println("\n⚠️ This delivery already has vehicle: " + 
+            System.out.println("\n This delivery already has vehicle: " + 
                              selectedDelivery.getAssignedVehicle().getVehicleId());
             System.out.print("Replace it? (y/n): ");
             String replace = scanner.nextLine();
@@ -1459,7 +1458,7 @@ public class NewMain {
         }
         
         // Show suitable vehicles (available and can carry weight)
-        System.out.println("\n🚗 Suitable Vehicles (Available & Capacity ≥ " + parcelWeight + " kg):");
+        System.out.println("\n Suitable Vehicles (Available & Capacity ≥ " + parcelWeight + " kg):");
         ArrayList<Vehicle> suitableVehicles = new ArrayList<>();
         int vehicleCount = 0;
         
@@ -1475,7 +1474,7 @@ public class NewMain {
         }
         
         if (vehicleCount == 0) {
-            System.out.println("\n❌ No suitable vehicles available!");
+            System.out.println("\n No suitable vehicles available!");
             System.out.println("   Vehicles must be: 1) Available 2) Capacity ≥ " + parcelWeight + " kg");
             return;
         }
@@ -1485,7 +1484,7 @@ public class NewMain {
         scanner.nextLine();
         
         if (vehicleChoice < 1 || vehicleChoice > suitableVehicles.size()) {
-            System.out.println("❌ Invalid selection!");
+            System.out.println("Invalid selection!");
             return;
         }
         
@@ -1500,7 +1499,7 @@ public class NewMain {
                          " (" + selectedVehicle.getPlateNumber() + ")";
         selectedDelivery.assignRoute(newRoute);
         
-        System.out.println("\n✅ VEHICLE ASSIGNED SUCCESSFULLY!");
+        System.out.println("\n VEHICLE ASSIGNED SUCCESSFULLY!");
         System.out.println("Vehicle: " + selectedVehicle.getVehicleId() + 
                          " (" + selectedVehicle.getVehicleType() + ")");
         System.out.println("Assigned to: Delivery " + selectedDelivery.getDeliveryId());
@@ -1509,7 +1508,7 @@ public class NewMain {
         System.out.println("Route: " + newRoute);
         
     } catch (InputMismatchException e) {
-        System.out.println("❌ Invalid input! Please enter numbers only.");
+        System.out.println("Invalid input! Please enter numbers only.");
         scanner.nextLine();
     }
 }

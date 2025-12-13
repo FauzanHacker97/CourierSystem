@@ -40,4 +40,10 @@ public class Validator {
         }
         return phone;
     }
+    
+    // Validate parcel dimensions
+    public static boolean isValidDimensions(String dimensions) {
+        if (dimensions == null || dimensions.isEmpty()) return false;
+        return dimensions.matches("\\d+x\\d+x\\d+"); // Format: LxWxH
+    }
 }

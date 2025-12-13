@@ -1,7 +1,6 @@
 package services;
 
 import models.Payment;
-import models.Parcel;
 import java.util.ArrayList;
 
 public class PaymentService {
@@ -12,14 +11,14 @@ public class PaymentService {
     }
     
     // Create new payment
-    public Payment createPayment(Parcel parcel, double amount, String method) {
+    public Payment createPayment(double amount, String method) {
         String paymentId = "PAY" + System.currentTimeMillis();
-        Payment payment = new Payment(paymentId, parcel, amount, method);
+        Payment payment = new Payment(paymentId, amount, method);
         payments.add(payment);
         return payment;
     }
     
-    // Process payment
+    // Process payment by ID
     public void processPayment(String paymentId) {
         for (Payment payment : payments) {
             if (payment.getPaymentId().equals(paymentId)) {
@@ -28,6 +27,17 @@ public class PaymentService {
             }
         }
         System.out.println("Payment not found!");
+    }
+    
+    // Get total revenue
+    public double calculateTotalRevenue() {
+        double total = 0;
+        for (Payment payment : payments) {
+            if (payment.getStatus().equals("Completed")) {
+                total += payment.getAmount();
+            }
+        }
+        return total;
     }
     
     // Display all payments
@@ -39,14 +49,18 @@ public class PaymentService {
         }
     }
     
-    // Calculate total revenue
-    public double calculateTotalRevenue() {
-        double total = 0;
+    // Get payments list
+    public ArrayList<Payment> getPayments() {
+        return payments;
+    }
+    
+    // Get payment by ID
+    public Payment getPaymentById(String paymentId) {
         for (Payment payment : payments) {
-            if (payment.getStatus().equals("Completed")) {
-                total += payment.getAmount();
+            if (payment.getPaymentId().equals(paymentId)) {
+                return payment;
             }
         }
-        return total;
+        return null;
     }
 }

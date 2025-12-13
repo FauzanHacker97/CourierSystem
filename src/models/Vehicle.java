@@ -57,7 +57,7 @@ public class Vehicle {
         System.out.println("Type: " + vehicleType);
         System.out.println("Plate: " + plateNumber);
         System.out.println("Capacity: " + capacity + " kg");
-        System.out.println("Available: " + (isAvailable ? "✅ Yes" : "❌ No"));
+        System.out.println("Available: " + (isAvailable ? "Yes" : "No"));
         if (!isAvailable && currentDeliveryId != null) {
             System.out.println("Currently on: Delivery " + currentDeliveryId);
         }
